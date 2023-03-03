@@ -1,4 +1,8 @@
 {
+    "java.project.sourcePaths": [
+        "javafx/src"
+    ],
+    "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Openfx\\lib\\javafx.base.jar",
@@ -8,14 +12,6 @@
         "c:\\Openfx\\lib\\javafx.media.jar",
         "c:\\Openfx\\lib\\javafx.swing.jar",
         "c:\\Openfx\\lib\\javafx.web.jar",
-        "c:\\Openfx\\lib\\javafx-swt.jar",
-        "c:\\Users\\duquew\\Downloads\\javafx-sdk-19.0.2.1\\lib\\javafx.base.jar",
-        "c:\\Users\\duquew\\Downloads\\javafx-sdk-19.0.2.1\\lib\\javafx.controls.jar",
-        "c:\\Users\\duquew\\Downloads\\javafx-sdk-19.0.2.1\\lib\\javafx.fxml.jar",
-        "c:\\Users\\duquew\\Downloads\\javafx-sdk-19.0.2.1\\lib\\javafx.graphics.jar",
-        "c:\\Users\\duquew\\Downloads\\javafx-sdk-19.0.2.1\\lib\\javafx.media.jar",
-        "c:\\Users\\duquew\\Downloads\\javafx-sdk-19.0.2.1\\lib\\javafx.swing.jar",
-        "c:\\Users\\duquew\\Downloads\\javafx-sdk-19.0.2.1\\lib\\javafx.web.jar",
-        "c:\\Users\\duquew\\Downloads\\javafx-sdk-19.0.2.1\\lib\\javafx-swt.jar"
+        "c:\\Openfx\\lib\\javafx-swt.jar"
     ]
 }

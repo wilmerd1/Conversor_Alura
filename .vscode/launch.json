@@ -6,16 +6,17 @@
     "configurations": [
         {
             "type": "java",
-            "name": "App",
-            "request": "launch",
-            "mainClass": "App",
-            "projectName": "JavaFx_9ef27a24"
-        },
-        {
-            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "vmArgs": "--module-path \"C:/Openfx/lib\" --add-modules javafx.controls,javafx.fxml", 
+            "mainClass": "App",
+            "projectName": "JavaFx_9ef27a24"
         }
     ]
 }
