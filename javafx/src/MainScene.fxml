@@ -81,7 +81,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="56.0" layoutY="240.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Alternar" AnchorPane.leftAnchor="50.0">
+            <Button fx:id="invertButton" layoutX="56.0" layoutY="240.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Alternar" AnchorPane.leftAnchor="50.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

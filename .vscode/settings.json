@@ -2,7 +2,6 @@
     "java.project.sourcePaths": [
         "javafx/src"
     ],
-    "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Openfx\\lib\\javafx.base.jar",

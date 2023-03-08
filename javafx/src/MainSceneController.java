@@ -1,18 +1,25 @@
+import java.util.ArrayList;
+import clases.*;
 import javafx.application.Platform;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class MainSceneController {
 
+    
     @FXML
     private ImageView arrowDivisas;
 
-    @FXML
     private ImageView arrowExit;
 
     @FXML
@@ -22,13 +29,13 @@ public class MainSceneController {
     private ImageView btnExit;
 
     @FXML
-    private ComboBox<?> cbxDivisa1;
+    private ComboBox<Divisas> cbxDivisa1;
+
+    @FXML
+    private ComboBox<Divisas> cbxDivisa2;
 
     @FXML
     private ComboBox<?> cbxDivisa11;
-
-    @FXML
-    private ComboBox<?> cbxDivisa2;
 
     @FXML
     private ComboBox<?> cbxDivisa21;
@@ -64,6 +71,9 @@ public class MainSceneController {
     private TextField txtResultado1;
 
     @FXML
+    private Button invertButton;
+
+    @FXML
     void getOnDivisasButtonClicked(MouseEvent event) {
         divisasPanel.setVisible(true);
         arrowDivisas.setVisible(true);
@@ -89,4 +99,37 @@ public class MainSceneController {
 
     }
 
-}
+    @FXML
+    private void ComboboxEvents(ActionEvent e) {
+
+    }
+
+    @FXML
+    public void initialize() {
+
+       
+    }
+
+    
+   /* public void invertirSeleccionComboBox() {
+
+        invertButton.setOnAction(event -> {
+            Divisas tempSelection1 = cbxDivisa1.getSelectionModel().getSelectedItem();
+            Divisas tempSelection2 = cbxDivisa2.getSelectionModel().getSelectedItem();
+
+            if (tempSelection1 == null || tempSelection2 == null && tempSelection1.equals(tempSelection2)
+                    || tempSelection2.equals(tempSelection1)) {
+                System.out.println("Error");
+                return;
+
+            }
+
+            cbxDivisa1.getSelectionModel().select(tempSelection2);
+            cbxDivisa2.getSelectionModel().select(tempSelection1);
+            cbxDivisa1.requestFocus();
+
+        });*/
+
+    }
+
+
