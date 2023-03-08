@@ -4,7 +4,11 @@ public class Divisas {
     
     String divisa;
 
-    public Divisas() {}
+    public Divisas(
+
+    ) {
+        
+    }
 
     public String getDivisa() {
         return divisa;
@@ -20,7 +24,7 @@ public class Divisas {
 
     @Override 
     public String toString(){
-        return "Divi: "+getDivisa();
+        return getDivisa();
     }
 
 }
