@@ -64,10 +64,10 @@
       </AnchorPane>
       <AnchorPane fx:id="divisasPanel" layoutX="15.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #143961;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
          <children>
-            <TextField fx:id="txtDivisa" layoutX="300.0" layoutY="72.0" prefHeight="40.0" prefWidth="134.0" promptText="Ingrese un número" />
+            <TextField fx:id="txtMoneda" layoutX="300.0" layoutY="72.0" prefHeight="40.0" prefWidth="134.0" promptText="Ingrese un número" />
             <TextField fx:id="txtResultado" layoutX="300.0" layoutY="150.0" prefHeight="40.0" prefWidth="134.0" />
-            <ComboBox fx:id="cbxDivisa1" layoutX="106.0" layoutY="71.0" prefHeight="40.0" prefWidth="170.0" AnchorPane.bottomAnchor="203.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="72.0" />
-            <ComboBox fx:id="cbxDivisa2" layoutX="106.0" layoutY="150.0" prefHeight="40.0" prefWidth="170.0" />
+            <ComboBox fx:id="cbDivisa1" layoutX="106.0" layoutY="71.0" prefHeight="40.0" prefWidth="170.0" AnchorPane.bottomAnchor="203.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="72.0" />
+            <ComboBox fx:id="cbDivisa2" layoutX="106.0" layoutY="150.0" prefHeight="40.0" prefWidth="170.0" />
             <Label layoutX="28.0" layoutY="22.0" text="CONVERSOR DIVISAS" textFill="WHITE" AnchorPane.bottomAnchor="281.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="13.0">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -119,7 +119,7 @@
             <Image url="@imagenes/icon_triangle.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="arrowTemp" disable="true" fitHeight="25.0" fitWidth="25.0" layoutX="213.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="arrowTemperatura" disable="true" fitHeight="25.0" fitWidth="25.0" layoutX="213.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@imagenes/icon_triangle.png" />
          </image>

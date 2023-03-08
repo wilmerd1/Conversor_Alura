@@ -1,13 +1,10 @@
-
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -18,7 +15,8 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScene.fxml"));
+        Parent root = loader.load();
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -46,6 +44,7 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Conversor Alura");
         primaryStage.show();
+
 
     }
 

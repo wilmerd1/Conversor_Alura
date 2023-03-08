@@ -3,7 +3,7 @@
         "javafx/src"
     ],
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
+        
         "c:\\Openfx\\lib\\javafx.base.jar",
         "c:\\Openfx\\lib\\javafx.controls.jar",
         "c:\\Openfx\\lib\\javafx.fxml.jar",
@@ -11,6 +11,7 @@
         "c:\\Openfx\\lib\\javafx.media.jar",
         "c:\\Openfx\\lib\\javafx.swing.jar",
         "c:\\Openfx\\lib\\javafx.web.jar",
-        "c:\\Openfx\\lib\\javafx-swt.jar"
+        "c:\\Openfx\\lib\\javafx-swt.jar",
+       
     ]
 }

@@ -1,10 +1,13 @@
+
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 import clases.*;
 import javafx.application.Platform;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -14,25 +17,24 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class MainSceneController {
-
-    
+public class MainSceneController implements Initializable{
     @FXML
     private ImageView arrowDivisas;
 
+    @FXML
     private ImageView arrowExit;
 
     @FXML
-    private ImageView arrowTemp;
+    private ImageView arrowTemperatura;
 
     @FXML
     private ImageView btnExit;
 
     @FXML
-    private ComboBox<Divisas> cbxDivisa1;
+    private ComboBox<Divisas> cbDivisa1;
 
     @FXML
-    private ComboBox<Divisas> cbxDivisa2;
+    private ComboBox<Divisas> cbDivisa2;
 
     @FXML
     private ComboBox<?> cbxDivisa11;
@@ -44,13 +46,10 @@ public class MainSceneController {
     private AnchorPane divisasPanel;
 
     @FXML
-    private Label lblDivisa1;
+    private Button invertButton;
 
     @FXML
     private Label lblDivisa11;
-
-    @FXML
-    private Label lblDivisa2;
 
     @FXML
     private Label lblDivisa21;
@@ -59,26 +58,25 @@ public class MainSceneController {
     private AnchorPane tempPanel;
 
     @FXML
-    private TextField txtDivisa;
+    private TextField txtDivisa1;
 
     @FXML
-    private TextField txtDivisa1;
+    private TextField txtMoneda;
 
     @FXML
     private TextField txtResultado;
 
     @FXML
     private TextField txtResultado1;
+    
 
-    @FXML
-    private Button invertButton;
 
     @FXML
     void getOnDivisasButtonClicked(MouseEvent event) {
         divisasPanel.setVisible(true);
         arrowDivisas.setVisible(true);
         tempPanel.setVisible(false);
-        arrowTemp.setVisible(false);
+        arrowTemperatura.setVisible(false);
         arrowExit.setVisible(false);
     }
 
@@ -92,7 +90,7 @@ public class MainSceneController {
     void getOnTemperaturaButtonClicked(MouseEvent event) {
 
         tempPanel.setVisible(true);
-        arrowTemp.setVisible(true);
+        arrowTemperatura.setVisible(true);
         divisasPanel.setVisible(false);
         arrowDivisas.setVisible(false);
         arrowExit.setVisible(false);
@@ -100,16 +98,32 @@ public class MainSceneController {
     }
 
     @FXML
-    private void ComboboxEvents(ActionEvent e) {
+    public void comboboxEvents(ActionEvent e){
 
+       // Object evt = e.getSource();
+        
     }
 
+   
     @FXML
-    public void initialize() {
-
-       
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cbDivisa1.getItems().addAll(createColletDivisas());    
+        cbDivisa1.setConverter(new Divisas_Converter());  
+        
     }
 
+   private ArrayList<Divisas> createColletDivisas(){
+        ArrayList<Divisas> div = new ArrayList<>();
+        div.add(new Divisas("USD"));
+        div.add(new Divisas("EEU"));
+        div.add(new Divisas("COL"));
+
+        return div;
+
+
+    }
+   
+    
     
    /* public void invertirSeleccionComboBox() {
 

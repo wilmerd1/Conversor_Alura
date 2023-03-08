@@ -2,29 +2,25 @@ package clases;
 
 public class Divisas {
     
-    String divi;
+    String divisa;
 
-public Divisas(){
+    public Divisas() {}
 
-
-}
-
-    public String getDivi() {
-        return divi;
+    public String getDivisa() {
+        return divisa;
     }
 
-    public void setDivi(String divisa) {
-        this.divi = divisa;
+    public void setDivisa(String divisa) {
+        this.divisa = divisa;
     }
 
     public Divisas(String divisa) {
-        this.divi = divisa;
+        this.divisa = divisa;
     }
 
-@Override 
-public String toString(){
-
-    return getDivi();
-}
+    @Override 
+    public String toString(){
+        return "Divi: "+getDivisa();
+    }
 
 }
