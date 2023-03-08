@@ -68,8 +68,6 @@
             <TextField fx:id="txtResultado" layoutX="300.0" layoutY="150.0" prefHeight="40.0" prefWidth="134.0" />
             <ComboBox fx:id="cbxDivisa1" layoutX="106.0" layoutY="71.0" prefHeight="40.0" prefWidth="170.0" AnchorPane.bottomAnchor="203.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="72.0" />
             <ComboBox fx:id="cbxDivisa2" layoutX="106.0" layoutY="150.0" prefHeight="40.0" prefWidth="170.0" />
-            <Label fx:id="lblDivisa1" layoutX="14.0" layoutY="84.0" prefHeight="40.0" prefWidth="83.0" />
-            <Label fx:id="lblDivisa2" layoutX="14.0" layoutY="149.0" prefHeight="40.0" prefWidth="83.0" />
             <Label layoutX="28.0" layoutY="22.0" text="CONVERSOR DIVISAS" textFill="WHITE" AnchorPane.bottomAnchor="281.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="288.0" AnchorPane.topAnchor="13.0">
                <font>
                   <Font name="System Bold" size="14.0" />
