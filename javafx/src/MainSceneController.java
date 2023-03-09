@@ -83,10 +83,10 @@ public class MainSceneController implements Initializable {
     private TextField txtResultado;
 
     @FXML
-    private TextField txtTempDos;
+    private TextField txtTempResultado;
 
     @FXML
-    private TextField txtTempUno;
+    private TextField txtTempValor;
 
     DivisasList divisasList = new DivisasList();
     TemperaturaList temperaturaList = new TemperaturaList();
@@ -143,6 +143,11 @@ public class MainSceneController implements Initializable {
     }
 
     @FXML
+    void convertirTempButtonsetOnAction(ActionEvent event) {
+        calcularTemperaturas();
+    }
+
+    @FXML
     void comboBox1setOnAction(ActionEvent event) {
         cambiarSeleccionDivisasCb1();
     }
@@ -173,13 +178,10 @@ public class MainSceneController implements Initializable {
 
     @FXML
     void comboBoxTemp2setOnAction(ActionEvent event) {
-cambiarSeleccionTemperaturaCb2();
+        cambiarSeleccionTemperaturaCb2();
     }
 
-    @FXML
-    void convertirTempButtonsetOnAction(ActionEvent event) {
-
-    }
+    
 
     private void cambiarSeleccionDivisasCb1() {
 
@@ -212,7 +214,6 @@ cambiarSeleccionTemperaturaCb2();
         }
     }
 
-
     private void cambiarSeleccionTemperaturaCb1() {
 
         String seleccion = cbTempUno.getSelectionModel().getSelectedItem().toString();
@@ -225,7 +226,7 @@ cambiarSeleccionTemperaturaCb2();
         } else if (seleccion == "Kelvin") {
 
             lblTempUno.setText("0 K");
-        } else if (seleccion == "Rankine"){
+        } else if (seleccion == "Rankine") {
             lblTempUno.setText("0 °R");
 
         }
@@ -244,7 +245,7 @@ cambiarSeleccionTemperaturaCb2();
         } else if (seleccion == "Kelvin") {
 
             lblTempDos.setText("0 K");
-        } else if (seleccion == "Rankine"){
+        } else if (seleccion == "Rankine") {
             lblTempDos.setText("0 °R");
 
         }
@@ -272,6 +273,68 @@ cambiarSeleccionTemperaturaCb2();
 
     }
 
+    public void calcularTemperaturas() {
+          
+        
+          try {
+          
+          String textoValor = txtTempValor.getText();
+          double valorDoble = Double.parseDouble(textoValor);
+          Temperatura valor1 = cbTempUno.getSelectionModel().getSelectedItem();
+          Temperatura valor2 = cbTempDos.getSelectionModel().getSelectedItem();
+          
+          String separador = valor1 + " - " + valor2;
+          
+          
+          Map<String, String> opciones = new HashMap<>();
+          opciones.put("Celsius - Fahrenheit", "C to F");
+          opciones.put("Celsius - Kelvin", "C to K");
+          opciones.put("Celsius - Rankine", "C to R");
+          
+          opciones.put("Fahrenheit - Celsius", "F to C");
+          opciones.put("Fahrenheit - Kelvin", "F to K");
+          opciones.put("Fahrenheit - Rankine", "F to R");
+          
+          opciones.put("Kelvin - Celsius", "K to C");
+          opciones.put("Kelvin - Fahrenheit", "K to F");
+          opciones.put("Kelvin - Rankine", "K to R");
+          
+          opciones.put("Rankine - Celsius", "R to C");
+          opciones.put("Rankine - Fahrenheit", "R to F");
+          opciones.put("Rankine - Kelvin", "R to K");
+          
+          String resultado = opciones.get(separador);
+          
+          
+           if (resultado == null) {
+          JOptionPane.showMessageDialog(null, "Selecciones una opción valida",
+          "Alerta",
+          JOptionPane.ERROR_MESSAGE);
+          } else if (resultado == "C to F") {
+          double operacion = (valorDoble*9/5)+32;
+          String solucion = Double.valueOf(operacion).toString();
+          txtTempResultado.setText(solucion + " °F");
+          } else if (resultado == "C to K") {
+            double operacion = valorDoble+273.15;
+            String solucion = Double.valueOf(operacion).toString();
+            txtTempResultado.setText(solucion + " K");
+          }else if (resultado == "C to R") {
+            double operacion = (valorDoble + 273.15) * 9/5;
+            String solucion = Double.valueOf(operacion).toString();
+            txtTempResultado.setText(solucion + " °R");
+          }
+
+
+
+          } catch (Exception e) {
+          JOptionPane.showMessageDialog(null,
+          "Debe ingresar un valor numerico unicamente", "Error!",
+          JOptionPane.ERROR_MESSAGE);
+          
+          }
+         
+    }
+
     public void calcularDivisas() {
         try {
             String valorTexto = txtMoneda.getText(); // toma el valor ingresado
@@ -294,7 +357,7 @@ cambiarSeleccionTemperaturaCb2();
 
             // Comprobacion del resultado y posibles combinaciones con sus operaciones
             if (resultado == null) {
-                JOptionPane.showMessageDialog(null, "Las Divisas no pueden ser iguales o debes selecionar alguna",
+                JOptionPane.showMessageDialog(null, "Selecciones una divisa valida",
                         "Alerta",
                         JOptionPane.ERROR_MESSAGE);
             } else if (resultado == "USD a EUR") {

@@ -63,7 +63,7 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="divisasPanel" layoutX="15.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #1a2d4c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+      <AnchorPane fx:id="divisasPanel" layoutX="15.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #1a2d4c;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
          <children>
             <TextField fx:id="txtMoneda" layoutX="439.0" layoutY="83.0" prefHeight="40.0" prefWidth="195.0" promptText="Ingrese un número" AnchorPane.rightAnchor="20.0" />
             <TextField fx:id="txtResultado" editable="false" layoutX="439.0" layoutY="164.0" opacity="0.69" prefHeight="40.0" prefWidth="195.0" AnchorPane.rightAnchor="20.0">
@@ -138,10 +138,10 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="temperaturaPanel" layoutX="10.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #122e1b;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+      <AnchorPane fx:id="temperaturaPanel" layoutX="10.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #122e1b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
          <children>
-            <TextField fx:id="txtTempUno" layoutX="439.0" layoutY="83.0" prefHeight="40.0" prefWidth="195.0" promptText="Ingrese un número" AnchorPane.rightAnchor="20.0" />
-            <TextField fx:id="txtTempDos" editable="false" layoutX="439.0" layoutY="164.0" opacity="0.69" prefHeight="40.0" prefWidth="195.0" AnchorPane.rightAnchor="20.0">
+            <TextField fx:id="txtTempValor" layoutX="439.0" layoutY="83.0" prefHeight="40.0" prefWidth="195.0" promptText="Ingrese un número" AnchorPane.rightAnchor="20.0" />
+            <TextField fx:id="txtTempResultado" editable="false" layoutX="439.0" layoutY="164.0" opacity="0.69" prefHeight="40.0" prefWidth="195.0" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font size="15.0" />
                </font>
