@@ -1,16 +1,13 @@
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
-import clases.*;
 import clases.Divisas;
 import clases.DivisasList;
+import clases.Temperatura;
+import clases.TemperaturaList;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,7 +23,8 @@ import javafx.scene.layout.AnchorPane;
 public class MainSceneController implements Initializable {
 
     @FXML
-    private Button calcularButton;
+    private Button ConvertirTempButton;
+
     @FXML
     private ImageView arrowDivisas;
 
@@ -41,16 +38,19 @@ public class MainSceneController implements Initializable {
     private ImageView btnExit;
 
     @FXML
+    private Button calcularButton;
+
+    @FXML
     private ComboBox<Divisas> cbDivisa1;
 
     @FXML
     private ComboBox<Divisas> cbDivisa2;
 
     @FXML
-    private ComboBox<?> cbxDivisa11;
+    private ComboBox<Temperatura> cbTempDos;
 
     @FXML
-    private ComboBox<?> cbxDivisa21;
+    private ComboBox<Temperatura> cbTempUno;
 
     @FXML
     private AnchorPane divisasPanel;
@@ -59,16 +59,22 @@ public class MainSceneController implements Initializable {
     private Button invertButton;
 
     @FXML
-    private Label lblDivisa11;
+    private Button invertirTemperaturaButton;
 
     @FXML
-    private Label lblDivisa21;
+    private Label lblDdos;
 
     @FXML
-    private AnchorPane tempPanel;
+    private Label lblDuno;
 
     @FXML
-    private TextField txtDivisa1;
+    private Label lblTempDos;
+
+    @FXML
+    private Label lblTempUno;
+
+    @FXML
+    private AnchorPane temperaturaPanel;
 
     @FXML
     private TextField txtMoneda;
@@ -77,47 +83,26 @@ public class MainSceneController implements Initializable {
     private TextField txtResultado;
 
     @FXML
-    private TextField txtResultado1;
+    private TextField txtTempDos;
+
+    @FXML
+    private TextField txtTempUno;
 
     DivisasList divisasList = new DivisasList();
+    TemperaturaList temperaturaList = new TemperaturaList();
 
-    public ComboBox<Divisas> getCbDivisa2() {
-        return cbDivisa2;
-    }
+    @FXML
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cargarComboboxDivisas();
+        cargarComboboxTemperatura();
 
-    public void setCbDivisa2(ComboBox<Divisas> cbDivisa2) {
-        this.cbDivisa2 = cbDivisa2;
-    }
-
-    public ComboBox<Divisas> getCbDivisa1() {
-        return cbDivisa1;
-    }
-
-    public void setCbDivisa1(ComboBox<Divisas> cbDivisa1) {
-        this.cbDivisa1 = cbDivisa1;
-    }
-
-    public TextField getTxtResultado() {
-        return txtResultado;
-    }
-
-    public void setTxtResultado(TextField txtResultado) {
-        this.txtResultado = txtResultado;
-    }
-
-    public TextField getTxtMoneda() {
-        return txtMoneda;
-    }
-
-    public void setTxtMoneda(TextField txtMoneda) {
-        this.txtMoneda = txtMoneda;
     }
 
     @FXML
     void getOnDivisasButtonClicked(MouseEvent event) {
         divisasPanel.setVisible(true);
         arrowDivisas.setVisible(true);
-        tempPanel.setVisible(false);
+        temperaturaPanel.setVisible(false);
         arrowTemperatura.setVisible(false);
         arrowExit.setVisible(false);
     }
@@ -131,7 +116,7 @@ public class MainSceneController implements Initializable {
     @FXML
     void getOnTemperaturaButtonClicked(MouseEvent event) {
 
-        tempPanel.setVisible(true);
+        temperaturaPanel.setVisible(true);
         arrowTemperatura.setVisible(true);
         divisasPanel.setVisible(false);
         arrowDivisas.setVisible(false);
@@ -140,17 +125,15 @@ public class MainSceneController implements Initializable {
     }
 
     @FXML
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        cargarCombobox();
+    private void cargarComboboxDivisas() {
+        cbDivisa1.getItems().addAll(divisasList.crearCollectionDivisas());
+        cbDivisa2.getItems().addAll(divisasList.crearCollectionDivisas());
     }
 
     @FXML
-    private void cargarCombobox() {
-        cbDivisa1.getItems().addAll(divisasList.crearCollectionDivisas());
-        cbDivisa2.getItems().addAll(divisasList.crearCollectionDivisas());
-        cbDivisa1.setConverter(new Divisas_Converter());
-        cbDivisa2.setConverter(new Divisas_Converter());
-
+    private void cargarComboboxTemperatura() {
+        cbTempUno.getItems().addAll(temperaturaList.coleccionTemperaturas());
+        cbTempDos.getItems().addAll(temperaturaList.coleccionTemperaturas());
     }
 
     @FXML
@@ -159,45 +142,142 @@ public class MainSceneController implements Initializable {
 
     }
 
-    /*
-     * 
-     * public void invertirSeleccionComboBox() {
-     * 
-     * invertButton.setOnAction(event -> {
-     * Divisas tempSelection1 = cbDivisa1.getSelectionModel().getSelectedItem();
-     * Divisas tempSelection2 = cbDivisa2.getSelectionModel().getSelectedItem();
-     * 
-     * if (tempSelection1 == null || tempSelection2 == null &&
-     * tempSelection1.equals(tempSelection2)
-     * || tempSelection2.equals(tempSelection1)) {
-     * System.out.println("Error");
-     * return;
-     * 
-     * }
-     * 
-     * cbDivisa1.getSelectionModel().select(tempSelection2);
-     * cbDivisa2.getSelectionModel().select(tempSelection1);
-     * cbDivisa1.requestFocus();
-     * 
-     * });}
-     * 
-     */
+    @FXML
+    void comboBox1setOnAction(ActionEvent event) {
+        cambiarSeleccionDivisasCb1();
+    }
+
+    @FXML
+    void comboBox2setOnAction(ActionEvent event) {
+        cambiarSeleccionDivisasCb2();
+
+    }
+
+    @FXML
+    void alternarButtonsetOnAction(ActionEvent event) {
+        invertirSeleccionComboBox();
+        limpiarTexto();
+
+    }
+
+    @FXML
+    void alternarTempButtonsetOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void comboBoxTemp1setOnAction(ActionEvent event) {
+        cambiarSeleccionTemperaturaCb1();
+
+    }
+
+    @FXML
+    void comboBoxTemp2setOnAction(ActionEvent event) {
+cambiarSeleccionTemperaturaCb2();
+    }
+
+    @FXML
+    void convertirTempButtonsetOnAction(ActionEvent event) {
+
+    }
+
+    private void cambiarSeleccionDivisasCb1() {
+
+        String seleccion = cbDivisa1.getSelectionModel().getSelectedItem().toString();
+        if (seleccion == "USD") {
+
+            lblDuno.setText("Dolar Americano");
+        } else if (seleccion == "EUR") {
+
+            lblDuno.setText("Euro");
+        } else if (seleccion == "COP") {
+
+            lblDuno.setText("Peso Colombiano");
+        }
+
+    }
+
+    private void cambiarSeleccionDivisasCb2() {
+        String seleccion = cbDivisa2.getSelectionModel().getSelectedItem().toString();
+
+        if (seleccion == "USD") {
+
+            lblDdos.setText("Dolar Americano");
+        } else if (seleccion == "EUR") {
+
+            lblDdos.setText("Euro");
+        } else if (seleccion == "COP") {
+
+            lblDdos.setText("Peso Colombiano");
+        }
+    }
 
 
-     // Iconos
-		ImageIcon iconCambioDivisa = new ImageIcon("src/imagenes/cambios_divisa.png");
-		ImageIcon iconCalcular = new ImageIcon("src/imagenes/calcular.png");
-		ImageIcon iconEuro = new ImageIcon("src/imagenes/euro.png");
-		ImageIcon iconDolar = new ImageIcon("src/imagenes/dollar.png");
-		ImageIcon iconPesoCol = new ImageIcon("src/imagenes/peso.png");
+    private void cambiarSeleccionTemperaturaCb1() {
 
-        
+        String seleccion = cbTempUno.getSelectionModel().getSelectedItem().toString();
+        if (seleccion == "Celsius") {
+
+            lblTempUno.setText("-273.15 °C");
+        } else if (seleccion == "Fahrenheit") {
+
+            lblTempUno.setText("-459.67 °F");
+        } else if (seleccion == "Kelvin") {
+
+            lblTempUno.setText("0 K");
+        } else if (seleccion == "Rankine"){
+            lblTempUno.setText("0 °R");
+
+        }
+
+    }
+
+    private void cambiarSeleccionTemperaturaCb2() {
+        String seleccion = cbTempDos.getSelectionModel().getSelectedItem().toString();
+
+        if (seleccion == "Celsius") {
+
+            lblTempDos.setText("-273.15 °C");
+        } else if (seleccion == "Fahrenheit") {
+
+            lblTempDos.setText("-459.67 °F");
+        } else if (seleccion == "Kelvin") {
+
+            lblTempDos.setText("0 K");
+        } else if (seleccion == "Rankine"){
+            lblTempDos.setText("0 °R");
+
+        }
+    }
+
+    public void invertirSeleccionComboBox() {
+
+        int combouno = cbDivisa1.getSelectionModel().getSelectedIndex();
+        int combodos = cbDivisa2.getSelectionModel().getSelectedIndex();
+
+        int temporal = combouno;
+
+        combouno = combodos;
+        combodos = temporal;
+
+        cbDivisa1.getSelectionModel().select(combouno);
+        cbDivisa2.getSelectionModel().select(combodos);
+
+    }
+
+    public void limpiarTexto() {
+
+        txtMoneda.setText("");
+        txtResultado.setText("");
+
+    }
+
     public void calcularDivisas() {
         try {
             String valorTexto = txtMoneda.getText(); // toma el valor ingresado
             double valorDoble = Double.parseDouble(valorTexto); // se pasa a double para poder hacer las operaciones
-            Divisas divisa1 = getCbDivisa1().getSelectionModel().getSelectedItem();
-            Divisas divisa2 = getCbDivisa2().getSelectionModel().getSelectedItem();
+            Divisas divisa1 = cbDivisa1.getSelectionModel().getSelectedItem();
+            Divisas divisa2 = cbDivisa2.getSelectionModel().getSelectedItem();
 
             String separador = divisa1 + " - " + divisa2; // ! el separador usado entre las elecciones
 

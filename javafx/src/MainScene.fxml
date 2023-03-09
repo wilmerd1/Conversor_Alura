@@ -63,12 +63,15 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="divisasPanel" layoutX="15.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #143961;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+      <AnchorPane fx:id="divisasPanel" layoutX="15.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #1a2d4c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
          <children>
             <TextField fx:id="txtMoneda" layoutX="439.0" layoutY="83.0" prefHeight="40.0" prefWidth="195.0" promptText="Ingrese un número" AnchorPane.rightAnchor="20.0" />
-            <TextField fx:id="txtResultado" editable="false" layoutX="439.0" layoutY="164.0" prefHeight="40.0" prefWidth="195.0" AnchorPane.rightAnchor="20.0" />
-            <ComboBox fx:id="cbDivisa1" layoutX="218.0" layoutY="82.0" prefHeight="42.0" prefWidth="201.0" promptText="Selecciones una divisa" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="82.0" />
-            <ComboBox fx:id="cbDivisa2" layoutX="218.0" layoutY="164.0" prefHeight="40.0" prefWidth="201.0" promptText="Selecciones una divisa" />
+            <TextField fx:id="txtResultado" editable="false" layoutX="439.0" layoutY="164.0" opacity="0.69" prefHeight="40.0" prefWidth="195.0" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <ComboBox fx:id="cbDivisa1" layoutX="218.0" layoutY="82.0" onAction="#comboBox1setOnAction" prefHeight="42.0" prefWidth="201.0" promptText="Seleccione una opción" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="82.0" />
+            <ComboBox fx:id="cbDivisa2" layoutX="218.0" layoutY="164.0" onAction="#comboBox2setOnAction" prefHeight="40.0" prefWidth="201.0" promptText="Seleccione una opción" />
             <Label layoutX="4.0" layoutY="4.0" prefHeight="42.0" prefWidth="170.0" text="CONVERSOR DIVISAS" textFill="WHITE" AnchorPane.bottomAnchor="305.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="464.0" AnchorPane.topAnchor="4.0">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -87,7 +90,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="invertButton" layoutX="80.0" layoutY="274.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" text="Alternar" AnchorPane.leftAnchor="80.0">
+            <Button fx:id="invertButton" layoutX="80.0" layoutY="274.0" mnemonicParsing="false" onAction="#alternarButtonsetOnAction" prefHeight="40.0" prefWidth="170.0" text="Alternar" AnchorPane.leftAnchor="80.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -120,35 +123,97 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblDuno" layoutX="20.0" layoutY="83.0" prefHeight="40.0" prefWidth="170.0" />
-            <Label fx:id="lblDdos" layoutX="20.0" layoutY="164.0" prefHeight="40.0" prefWidth="170.0" />
+            <Label fx:id="lblDuno" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="83.0" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #2b8f45;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label fx:id="lblDdos" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="164.0" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #2b8f45;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="20.0" layoutY="58.0" prefHeight="17.0" prefWidth="170.0" text="Nombre Divisas:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="tempPanel" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #14615e;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+      <AnchorPane fx:id="temperaturaPanel" layoutX="10.0" layoutY="105.0" prefHeight="289.0" prefWidth="427.0" style="-fx-background-color: #122e1b;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
          <children>
-            <TextField fx:id="txtDivisa1" layoutX="300.0" layoutY="72.0" prefHeight="40.0" prefWidth="134.0" promptText="Ingrese un número" />
-            <TextField fx:id="txtResultado1" layoutX="300.0" layoutY="150.0" prefHeight="40.0" prefWidth="134.0" />
-            <ComboBox fx:id="cbxDivisa11" layoutX="106.0" layoutY="72.0" prefHeight="40.0" prefWidth="170.0" AnchorPane.bottomAnchor="203.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="72.0" />
-            <ComboBox fx:id="cbxDivisa21" layoutX="106.0" layoutY="150.0" prefHeight="40.0" prefWidth="170.0" />
-            <Label fx:id="lblDivisa11" layoutX="14.0" layoutY="72.0" prefHeight="40.0" prefWidth="83.0" />
-            <Label fx:id="lblDivisa21" layoutX="14.0" layoutY="143.0" prefHeight="40.0" prefWidth="83.0" />
-            <Label layoutX="9.0" layoutY="13.0" prefHeight="21.0" prefWidth="194.0" text="CONVERSOR TEMPERATURA" textFill="WHITE" AnchorPane.bottomAnchor="281.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="13.0">
+            <TextField fx:id="txtTempUno" layoutX="439.0" layoutY="83.0" prefHeight="40.0" prefWidth="195.0" promptText="Ingrese un número" AnchorPane.rightAnchor="20.0" />
+            <TextField fx:id="txtTempDos" editable="false" layoutX="439.0" layoutY="164.0" opacity="0.69" prefHeight="40.0" prefWidth="195.0" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="cbTempUno" layoutX="218.0" layoutY="82.0" onAction="#comboBoxTemp1setOnAction" prefHeight="42.0" prefWidth="201.0" promptText="Seleccione una opción" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="82.0" />
+            <ComboBox fx:id="cbTempDos" layoutX="218.0" layoutY="164.0" onAction="#comboBoxTemp2setOnAction" prefHeight="40.0" prefWidth="201.0" promptText="Seleccione una opción" />
+            <Label layoutX="4.0" layoutY="4.0" prefHeight="42.0" prefWidth="201.0" text="CONVERSOR TEMPERATURAS" textFill="WHITE" AnchorPane.bottomAnchor="305.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="433.0" AnchorPane.topAnchor="4.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Separator layoutX="30.0" layoutY="215.0" opacity="0.5" prefWidth="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
-            <Button layoutX="270.0" layoutY="240.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Calcular" AnchorPane.rightAnchor="50.0">
+            <Separator layoutX="50.0" layoutY="249.0" opacity="0.5" prefWidth="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="250.0" />
+            <Button fx:id="ConvertirTempButton" layoutX="404.0" layoutY="274.0" mnemonicParsing="false" onAction="#convertirTempButtonsetOnAction" prefHeight="42.0" prefWidth="170.0" text="Convertir" AnchorPane.rightAnchor="80.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/calcular.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button layoutX="56.0" layoutY="240.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Alternar" AnchorPane.leftAnchor="50.0">
+            <Button fx:id="invertirTemperaturaButton" layoutX="80.0" layoutY="274.0" mnemonicParsing="false" onAction="#alternarTempButtonsetOnAction" prefHeight="40.0" prefWidth="170.0" text="Alternar" AnchorPane.leftAnchor="80.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/cambios_divisa.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Separator layoutX="204.0" layoutY="22.0" opacity="0.5" prefHeight="5.0" prefWidth="230.0" AnchorPane.rightAnchor="16.0" />
+            <Separator layoutX="219.0" layoutY="23.0" opacity="0.5" prefHeight="5.0" prefWidth="393.0" AnchorPane.rightAnchor="20.0" />
+            <Label layoutX="219.0" layoutY="58.0" prefHeight="17.0" prefWidth="195.0" text="From:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="439.0" layoutY="58.0" prefHeight="17.0" prefWidth="195.0" text="Valor:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="220.0" layoutY="141.0" prefHeight="17.0" prefWidth="195.0" text="To:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="440.0" layoutY="141.0" prefHeight="17.0" prefWidth="195.0" text="Resultado:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTempUno" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="83.0" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #2b8f45;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTempDos" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="164.0" prefHeight="40.0" prefWidth="170.0" style="-fx-border-color: #2b8f45;" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="58.0" prefHeight="17.0" prefWidth="170.0" text="Cero Absoluto:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <ImageView fx:id="arrowDivisas" fitHeight="25.0" fitWidth="25.0" layoutX="64.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="67.0">
