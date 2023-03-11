@@ -1,4 +1,4 @@
-package clases;
+package temperatura;
 
 public class Temperatura {
 

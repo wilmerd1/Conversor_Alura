@@ -1,4 +1,4 @@
-package clases;
+package divisas;
 
 import java.util.ArrayList;
 

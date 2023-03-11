@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "javafx/src"
+        "javafx/src",
+        "principal/src"
     ],
     "java.project.referencedLibraries": [
         

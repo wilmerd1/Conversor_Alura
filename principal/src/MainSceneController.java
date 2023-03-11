@@ -1,13 +1,13 @@
 
+
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
-import clases.Divisas;
-import clases.DivisasList;
-import clases.Temperatura;
-import clases.TemperaturaList;
+
+import divisas.Divisas;
+import divisas.DivisasList;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import temperatura.Temperatura;
+import temperatura.TemperaturaList;
 
 public class MainSceneController implements Initializable {
 

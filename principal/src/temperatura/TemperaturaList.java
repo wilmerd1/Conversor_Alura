@@ -1,4 +1,4 @@
-package clases;
+package temperatura;
 
 import java.util.ArrayList;
 

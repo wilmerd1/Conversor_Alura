@@ -1,4 +1,4 @@
-package clases;
+package divisas;
 
 public class Divisas {
     
